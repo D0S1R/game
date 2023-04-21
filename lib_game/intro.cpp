@@ -1,3 +1,9 @@
+// TODO: ОПРЕДЕЛЕНИЕ функций(возможно не только функций) для интро
+
+#include "intro.h"
+
+using namespace std;
+
 void intro(){
     // Создаём переменную
     string line;
