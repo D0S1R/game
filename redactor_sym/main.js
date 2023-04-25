@@ -21,13 +21,13 @@ tinymce.init({
     selector: "#bodyRedactor",
     // theme: "modern",
     // width: 680,
-    height: 600,
+    height: 650,
     // relative_urls: false,
     // remove_script_host: false,
     // document_base_url: BASE_URL,
-    plugins: "advlist autolink link image lists charmap print preview hr anchor pagebreak searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking table contextmenu directionality emoticons paste textcolor code",
-    toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect",
-    toolbar2: " | link unlink anchor | image media | forecolor backcolor  | print preview code ",
+    plugins: "",//advlist autolink link image lists charmap print preview hr anchor pagebreak searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking table contextmenu directionality emoticons paste textcolor code",
+    toolbar1: "",//undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect",
+    toolbar2: "",// | link unlink anchor | image media | forecolor backcolor  | print preview code ",
     image_advtab: true,
 
     language: "ru",
@@ -38,11 +38,22 @@ tinymce.init({
 
 
 let ID_REDACTOR = "bodyRedactor";
-
-function Test_aa() {
+// TODO: настройка шрифта в редакторе
+function settings_red() {
     let el_parent = document.querySelector('#'+ID_REDACTOR+'_ifr').contentWindow.document.body;
     alert(el_parent.innerHTML)
+    el_parent.style.fontSize = "10px";
+    el_parent.style.fontFamily = "Lucida Console";
+
+    let el_head_in_frayme = document.querySelector('#'+ID_REDACTOR+'_ifr').contentWindow.document.querySelector("head");
+    let link_style = document.createElement("link");
+    link_style.rel = "stylesheet"
+    link_style.href = "style.css"
+    el_head_in_frayme.append(link_style);
 }
   
-setTimeout(Test_aa, 5000);
+setTimeout(settings_red, 1000);
+
+// ИЗМЕНЕНИЕ ЦВЕТА
+let btn_colorMap = document.querySelector("#colorMap");
 
