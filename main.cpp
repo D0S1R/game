@@ -1,4 +1,4 @@
-// ! g++ lib_game/intro.cpp main.cpp -IE:/git/game/lib_game -o walker
+// ! g++ main.cpp -IE:/git/game/lib_game -o walker
 
 // TODO: 
 // -I - путь, в которых находятся быблиотеки

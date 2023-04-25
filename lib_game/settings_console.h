@@ -10,7 +10,7 @@ void Console_setting(){
     cfi.cbSize = sizeof cfi;        // ? на чс, размер объекта типа данных CONSOLE_FONT_INFOEX
     cfi.nFont = 0;                  // ? Номер шрифта
     cfi.dwFontSize.X = 0;           // ? Размер шрифта
-    cfi.dwFontSize.Y = 8;           // ? Размер шрифта
+    cfi.dwFontSize.Y = 7;           // ? Размер шрифта
     cfi.FontFamily = FF_DONTCARE;   // ? Название шрифта
     cfi.FontWeight = FW_NORMAL;     // ? Ширина символа
 
