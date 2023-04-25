@@ -57,3 +57,9 @@ setTimeout(settings_red, 1000);
 // ИЗМЕНЕНИЕ ЦВЕТА
 let btn_colorMap = document.querySelector("#colorMap");
 
+btn_colorMap.onclick = () => {
+    let el_tr = document.createElement("tr");
+    let el_td = document.createElement("td");
+
+    
+}
