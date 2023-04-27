@@ -60,6 +60,7 @@ let btn_colorMap = document.querySelector("#colorMap");
 btn_colorMap.onclick = () => {
     let el_table = document.querySelector("#editColorMap");
     el_table.style.borderSpacing = "0px";
+    el_table.style.fontSize = document.querySelector("input#fontSize").value;
 
     for(i = 0; i < document.querySelector("input#cntY").value; i++){
         let el_tr = document.createElement("tr");
@@ -76,7 +77,7 @@ btn_colorMap.onclick = () => {
 
             el_td.innerHTML = ".";
 
-            el_td.addEventListener("mouseover", editElTd);
+            el_td.addEventListener("mousemove", editElTd);
 
             el_tr.append(el_td);
         }
@@ -89,6 +90,8 @@ btn_colorMap.onclick = () => {
 
 function editElTd(e){
     if(e.which == 1){
+        e.currentTarget.innerHTML = document.querySelector("input#viewSym").value;
+        e.currentTarget.style.color = document.querySelector("input#colorSym").value;
         e.currentTarget.style.backgroundColor = document.querySelector("input#backColorSym").value;
     }
 }
