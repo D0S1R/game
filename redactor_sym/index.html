@@ -3,10 +3,47 @@
 <head>
     <title>Redactor</title>
     <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+        html{
+            font-family: 'Lucida Console';
+            font-size: 16px;
+        }
+        table{
+            user-select: none;
+        }
+    </style>
 </head>
 <body>
-    <div id="bodyRedactor"></div>
+    <!-- настройка "консоли" -->
+    <p>Размер шрифта
+        <input type="text" id="fontSize" value="16px">
+    </p>
+    <p>Ширина ячейки
+        <input type="text" id="sizeXTd" value="8px">
+    </p>
+    <p>Высота ячейки
+        <input type="text" id="sizeYTd" value="16px">
+    </p>
+    <p>Кол-во символов по шерине
+        <input type="text" id="cntX" value="250">
+    </p>
+    <p>Кол-во символов по высоте
+        <input type="text" id="cntY" value="100">
+    </p>
+
     <button id="colorMap">Карта цветов</button>
+
+    <!-- редактирование карты -->
+    <p>Символ
+        <input type="text" id="viewSym" value="#">
+    </p>
+    <p>Цвет символа
+        <input type="text" id="colorSym" value="#FFFFFF">
+    </p>
+    <p>Цвет фона символа
+        <input type="text" id="backColorSym" value="#000000">
+    </p>
+
     <table id="editColorMap"></table>
     <a href="#">Download txt</a>
 </body>
