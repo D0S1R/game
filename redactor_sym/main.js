@@ -19,13 +19,137 @@ let arr_num_col = [
 ];
 
 let el_table;
-
-// создание "джейсон структуры, с инфой"
-// let text = JSON.stringify({hello:'example'});
 let map = "";
 let map_color = "";
-// вызов функции, которая создаст и скачает на комп клиента файл
-// downloadAsFile(text);
+let arr_map_color = [];
+
+
+var control = document.getElementById("map_txt_load");
+control.addEventListener("change", function(event) {
+    // Когда происходит изменение элементов управления, значит появились новые файлы
+    var i = 0,
+        files = control.files,
+        len = files.length;
+
+    let d = 0;
+    let a = 0;
+
+    
+
+    let arr_num_col = [
+        "rgb(12, 12, 12)",
+        "rgb(0, 54, 218)",
+        "rgb(19, 161, 14)",
+        "rgb(58, 150, 221)",
+        "rgb(197, 16, 31)",
+        "rgb(136, 23, 152)",
+        "rgb(193, 156, 0)",
+        "rgb(204, 204, 204)",
+        "rgb(118, 118, 118)",
+        "rgb(59, 120, 255)",
+        "rgb(22, 198, 12)",
+        "rgb(97, 214, 214)",
+        "rgb(231, 72, 86)",
+        "rgb(180, 0, 158)",
+        "rgb(249, 241, 165)",
+        "rgb(242, 242, 242)",
+    ];
+    let map = "";
+    let map_color = "";
+    let arr_map_color = [{bg:-1,fg:-1}];
+
+    for (; i < len; i++) {
+        if(files[i].name.includes("_color") > 1){
+            d = i;
+        }else{
+            a = i;
+        }
+        console.log("Filename: " + files[i].name);
+        console.log("Type: " + files[i].type);
+        console.log("Size: " + files[i].size + " bytes");
+    }
+
+    var reader_color = new FileReader();
+    reader_color.onload = function(event) {
+        var contents = event.target.result;
+        console.log("Содержимое файла: " + contents.length);
+        map_color = contents;
+
+        let str_arr = map_color.split("\n");
+        let k = 0;
+        for(i = 0; i < str_arr.length; i++){
+            let arr_el_el_el = str_arr[i].split(";");
+            for(j = 0; j < arr_el_el_el.length; j++){
+                let BG_FG = arr_el_el_el[j].split("-");
+                arr_map_color[k] = {
+                    bg: BG_FG[0],
+                    fg: BG_FG[1]
+                };
+                k++;
+            }
+        }
+    };
+    reader_color.onerror = function(event) {
+        console.error("Файл не может быть прочитан! код " + event.target.error.code);
+    };
+    if(i > 1){
+        reader_color.readAsText(files[d]);
+    }
+
+    var reader = new FileReader();
+    reader.onload = function(event) {
+        var contents = event.target.result;
+        console.log("Содержимое файла: " + contents.length);
+        map = contents;
+
+        el_table = document.querySelector("#editColorMap");
+        el_table.style.borderSpacing = "0px";
+        el_table.style.fontSize = document.querySelector("input#fontSize").value;
+
+        let cntXX = 0;
+        for(i = 0; i < contents.length; i++){
+            if(contents[i] == "\n"){
+                cntXX = i;
+                break;
+            }
+        }
+        let cntYY = contents.length / cntXX;
+        cntYY -= 1;
+
+        let k = 0;
+        let k_color = 0;
+        for(i = 0; i < cntYY; i++){
+            let el_tr = document.createElement("tr");
+            for(j = 0; j < cntXX; j++){
+                let el_td = document.createElement("td");
+                // el_td.style.maxWidth   = document.querySelector("input#sizeXTd").value;
+                // el_td.style.maxHeight  = document.querySelector("input#sizeYTd").value;
+
+                el_td.style.padding = "0px";
+                el_td.style.margin  = "0px";
+                
+                el_td.style.backgroundColor = arr_map_color[0].bg != -1 ? arr_num_col[Number(arr_map_color[k_color].bg)] : "rgb(12, 12, 12)";
+                el_td.style.color           = arr_map_color[0].fg != -1 ? arr_num_col[Number(arr_map_color[k_color].fg)] : "rgb(204, 204, 204)";
+                k_color++;
+
+                el_td.innerHTML = map[k];
+                k++;
+                el_td.addEventListener("mouseover", editElTd);
+                el_tr.append(el_td);
+            }
+            k++;
+            k_color++;
+            // k++;
+            el_table.append(el_tr);
+        }
+    };
+    reader.onerror = function(event) {
+        console.error("Файл не может быть прочитан! код " + event.target.error.code);
+    };
+    reader.readAsText(files[a]);
+
+}, false);
+
 
 function madeTxtMap(){
     // el_table;
@@ -92,44 +216,7 @@ a_map_color.onclick = () => {
     a_map_color.download = document.querySelector("input#nameMap").value + "_color.txt";
 }
 
-// tinymce.init({
-//     selector: "#bodyRedactor",
-//     // theme: "modern",
-//     // width: 680,
-//     height: 650,
-//     // relative_urls: false,
-//     // remove_script_host: false,
-//     // document_base_url: BASE_URL,
-//     plugins: "",//advlist autolink link image lists charmap print preview hr anchor pagebreak searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking table contextmenu directionality emoticons paste textcolor code",
-//     toolbar1: "",//undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect",
-//     toolbar2: "",// | link unlink anchor | image media | forecolor backcolor  | print preview code ",
-//     image_advtab: true,
-
-//     language: "ru",
-//     // valid_elements: 'a, div, p, span, img, script, style, h1, h2, h3, h4, h5, h6',
-//     extended_valid_elements: "img[*],style[*],list[*],p[*],span[*],table[*],tbody[*],tr[*],td[*]",
-//     // extended_valid_elements: "style[*]",
-// });
-
-
-// let ID_REDACTOR = "bodyRedactor";
-// // TODO: настройка шрифта в редакторе
-// function settings_red() {
-//     let el_parent = document.querySelector('#'+ID_REDACTOR+'_ifr').contentWindow.document.body;
-//     alert(el_parent.innerHTML)
-//     el_parent.style.fontSize = "10px";
-//     el_parent.style.fontFamily = "Lucida Console";
-
-//     let el_head_in_frayme = document.querySelector('#'+ID_REDACTOR+'_ifr').contentWindow.document.querySelector("head");
-//     let link_style = document.createElement("link");
-//     link_style.rel = "stylesheet"
-//     link_style.href = "style.css"
-//     el_head_in_frayme.append(link_style);
-// }
-  
-// setTimeout(settings_red, 1000);
-
-// ИЗМЕНЕНИЕ ЦВЕТА
+// редактирование карты
 let btn_colorMap = document.querySelector("#colorMap");
 
 btn_colorMap.onclick = () => {

@@ -14,6 +14,9 @@
     </style>
 </head>
 <body>
+    <input type="file" id="map_txt_load" multiple>
+    <!-- <input type="file" id="map_txt_load" multiple> -->
+    <!-- <button id="colorMap_load">Карта редактирование из файла</button> -->
     <!-- настройка "консоли" -->
     <p>Размер шрифта
         <input type="text" id="fontSize" value="16px">
@@ -31,7 +34,7 @@
         <input type="text" id="cntY" value="100">
     </p>
 
-    <button id="colorMap">Карта цветов</button>
+    <button id="colorMap">Карта редактирование</button>
 
     <!-- редактирование карты -->
     <p>Символ
@@ -58,10 +61,10 @@
     </p>
 
     <p>Цвет символа
-        <input type="text" id="colorSym" value="rgb(255, 255, 255)">
+        <input type="text" id="colorSym" value="rgb(204, 204, 204)">
     </p>
     <p>Цвет фона символа
-        <input type="text" id="backColorSym" value="rgb(0, 0, 0)">
+        <input type="text" id="backColorSym" value="rgb(12, 12, 12)">
     </p>
 
     <table id="editColorMap"></table>
