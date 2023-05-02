@@ -130,13 +130,21 @@ void Console_setting(){
     SetConsoleCP(65001);
     SetConsoleOutputCP(65001);
 
+    // нажимаем alt+enter
+    ::SendMessage(::GetConsoleWindow(), WM_SYSKEYDOWN, VK_RETURN, 0x20000000);
+
     SetWindowPos(hwnd,HWND_TOP,0,0,0,0, SWP_SHOWWINDOW);
-    SetWindowPos(hwnd,HWND_TOP,0,0,iWidth,iHeight+200, SWP_SHOWWINDOW);//SWP_NOZORDER|SWP_NOMOVE);
+    SetWindowPos(hwnd,HWND_TOP,0,0,iWidth,iHeight, SWP_SHOWWINDOW);//SWP_NOZORDER|SWP_NOMOVE);
     SetScrollRange(hwnd,SB_VERT,0,0,FALSE);
     SetScrollPos(hwnd,SB_VERT,0,FALSE);
 
-    SetForegroundWindow(hwnd);
-    AllowSetForegroundWindow(GetProcesByName(L"C:\\Users\\koshelev_da\\Desktop\\game\\b.exe"));
+    COORD cd;
+    cd.X = 0;
+    cd.Y = 0;
+    SetConsoleDisplayMode(GetStdHandle(STD_OUTPUT_HANDLE),CONSOLE_FULLSCREEN_MODE, &cd);
+
+    // SetForegroundWindow(hwnd);
+    // AllowSetForegroundWindow(GetProcesByName(L"C:\\Users\\koshelev_da\\Desktop\\game\\b.exe"));
 
     // изменение разрешения дисплея
     // DEVMODE deviceMode;
