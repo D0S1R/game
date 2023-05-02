@@ -132,6 +132,11 @@ void Console_setting(){
 
     // нажимаем alt+enter
     ::SendMessage(::GetConsoleWindow(), WM_SYSKEYDOWN, VK_RETURN, 0x20000000);
+    // ниже код также работает
+    // keybd_event(VK_MENU,0x38,0,0); //press ALT
+    // keybd_event(VK_RETURN,0x1c,0,0); //press ENTER
+    // keybd_event(VK_RETURN,0x1c,KEYEVENTF_KEYUP,0); //release ENTER
+    // keybd_event(VK_MENU,0x38,KEYEVENTF_KEYUP,0); //release ALT
 
     SetWindowPos(hwnd,HWND_TOP,0,0,0,0, SWP_SHOWWINDOW);
     SetWindowPos(hwnd,HWND_TOP,0,0,iWidth,iHeight, SWP_SHOWWINDOW);//SWP_NOZORDER|SWP_NOMOVE);
