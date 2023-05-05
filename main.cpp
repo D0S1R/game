@@ -28,6 +28,15 @@ int main(){
     intro();
 
     int gggggg;
+    // char Title[1024];
+    // GetConsoleTitle(Title, 1024); // Узнаем имя окна
+    // // GetModuleFileName(NULL,Title, sizeof(Title));
+    // HWND hwnd=FindWindow(NULL, Title); // Узнаем hwnd окна
+    // int iWidth = GetSystemMetrics(SM_CXSCREEN);  // разрешение экрана по горизонтали
+    // int iHeight = GetSystemMetrics(SM_CYSCREEN); // разрешение экрана по вертикали
+    // SetWindowLongPtr(hwnd, GWL_STYLE, WS_POPUP | WS_VISIBLE);
+    // SetWindowPos(hwnd,hwnd,0,0,0,0,SWP_NOZORDER|SWP_NOSIZE);
+    // SetWindowPos(hwnd,hwnd,0,0,iWidth,iHeight,SWP_NOZORDER|SWP_NOMOVE);
     cin >> gggggg;
 }
 
