@@ -1,2 +1,2 @@
 
-// int collect_color_in_arr(string)
+int collect_color_in_arr(string a);

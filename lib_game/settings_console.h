@@ -117,7 +117,7 @@ void Console_setting(){
     cfi.cbSize = sizeof cfi;                    // ? на чс, размер объекта типа данных CONSOLE_FONT_INFOEX
     cfi.nFont = 0;                              // ? Номер шрифта
     cfi.dwFontSize.X = 0;                       // ? Размер шрифта
-    cfi.dwFontSize.Y = (int)(iHeight/200);      // ? Размер шрифта
+    cfi.dwFontSize.Y = (int)(iHeight/100);      // ? Размер шрифта
     cfi.FontFamily = FF_DONTCARE;               // ? Название шрифта
     cfi.FontWeight = FW_NORMAL;                 // ? Ширина символа
 
@@ -140,13 +140,26 @@ void Console_setting(){
 
     SetWindowPos(hwnd,HWND_TOP,0,0,0,0, SWP_SHOWWINDOW);
     SetWindowPos(hwnd,HWND_TOP,0,0,iWidth,iHeight, SWP_SHOWWINDOW);//SWP_NOZORDER|SWP_NOMOVE);
-    SetScrollRange(hwnd,SB_VERT,0,0,FALSE);
-    SetScrollPos(hwnd,SB_VERT,0,FALSE);
+    // SetScrollRange(hwnd,SB_VERT,0,0,FALSE);
+    // SetScrollPos(hwnd,SB_VERT,0,FALSE);
 
     COORD cd;
     cd.X = 0;
     cd.Y = 0;
-    SetConsoleDisplayMode(GetStdHandle(STD_OUTPUT_HANDLE),CONSOLE_FULLSCREEN_MODE, &cd);
+    // SetConsoleDisplayMode(GetStdHandle(STD_OUTPUT_HANDLE),CONSOLE_FULLSCREEN_MODE, &cd);
+
+    SetConsoleDisplayMode(GetStdHandle(STD_OUTPUT_HANDLE), CONSOLE_FULLSCREEN_MODE, 0);
+
+    HANDLE hstdout = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    GetConsoleScreenBufferInfo(hstdout, &csbi);
+
+    csbi.dwSize.X = csbi.dwMaximumWindowSize.X;
+    csbi.dwSize.Y = csbi.dwMaximumWindowSize.Y;
+    SetConsoleScreenBufferSize(hstdout, csbi.dwSize);
+
+    HWND x = GetConsoleWindow();
+    ShowScrollBar(x, SB_BOTH, FALSE);
 
     // SetForegroundWindow(hwnd);
     // AllowSetForegroundWindow(GetProcesByName(L"C:\\Users\\koshelev_da\\Desktop\\game\\b.exe"));
