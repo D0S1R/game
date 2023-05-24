@@ -2,6 +2,8 @@
 // название самой игры(вдруг забыли)
 // добавить 3 кнопыча "начать игру, настройки, выход"
 // ну и функционыч туда тоже завезти
+#include "logic_game.hpp"
+
 void menu(){
     string line;
     ifstream mn_lg("assets/menu_logo.txt");
@@ -23,4 +25,19 @@ void menu(){
         }
     }
     mn_bt.close();
+    
+    while(true){
+        // GetAsyncKeyState('V')
+        if(GetKeyState('1')){
+            system("CLS");
+            Start_game();
+            break;
+        }
+        if(GetKeyState('2')){
+            abort();
+        }
+        if(GetKeyState('3')){
+            abort();
+        }
+    }
 }

@@ -13,14 +13,14 @@
 // 
 
 // ? Заголовок, в котором подключаются другие заголовки
-#include "lib_game/includs_h.h"
+#include "includs_h.h"
 
 using namespace std;
 
 // TODO: Подключение ОБЪЯВЛЕННЫХ функций и/или переменных, макросов и т.д.
-#include "lib_game/settings_console.hpp"
-#include "lib_game/intro.hpp"
-#include "lib_game/menu.hpp"
+#include "settings_console.hpp"
+#include "intro.hpp"
+#include "menu.hpp"
 
 int main(){
     // Тут мы вызываем изменение настроек консоли
@@ -28,7 +28,7 @@ int main(){
     // Тут мы вызываем интро
     intro();
 
-    Sleep(230);
+    Sleep(1500);
     system("CLS");
     menu();
     
