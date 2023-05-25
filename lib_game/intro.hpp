@@ -8,7 +8,7 @@ void intro(){
     int iHeight = GetSystemMetrics(SM_CYSCREEN); // разрешение экрана по вертикали
 
     float dd = (iHeight/100);
-    float size_x = (int)((dd/100.0)*60.0);
+    float size_x = (int)((dd/100.0)*60.0); // размер символа 
 
     int col_sym_x = (int)(iWidth/size_x);
     int col_sym_y = 100;
