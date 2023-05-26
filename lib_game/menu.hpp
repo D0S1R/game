@@ -30,7 +30,7 @@ void menu(){
         // GetAsyncKeyState('V')
         if(GetKeyState('1')){
             system("CLS");
-            Start_game();
+            Start_game();       
             break;
         }
         if(GetKeyState('2')){
