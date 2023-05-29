@@ -15,3 +15,4 @@ void player_move(int x2, int y2){
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
     cout << "☺";
 }
+void sym_color[]
