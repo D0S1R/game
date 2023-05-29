@@ -50,6 +50,10 @@ int main(){
 
         // arr_color["1-6","2-6","3-5"...]
     }
+    int arr_int_color[arr_color.size()][2]
+
+    // arr_int_color[i][0] = stoi(arr_color_true[i][0]);
+
     for(int i = 0; i < 100; i++){
         cout << arr_color[i] << endl;
     }
