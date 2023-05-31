@@ -7,7 +7,7 @@ void Start_game(){
     string line;
 
     // массив с картой
-    vector<string> map;
+    vector <string> map;
 
     // открывает файл карты для вывода/обработки
     ifstream test_map("assets/maps/map1.txt", ios::in);
@@ -40,9 +40,11 @@ void Start_game(){
             all_str += line;
         }
     }
+
     string_split(all_str, ';', arr_color);
     vector < string > arr_color_true[arr_color.size()];
-    for(int i = 0; i < 100; i++){
+
+    for(int i = 0; i < arr_color.size()-5; i++){
         string_split(arr_color[i], '-', arr_color_true[i]);
 
         // arr_color["1-6","2-6","3-5"...]
@@ -52,7 +54,7 @@ void Start_game(){
     // arr_int_color[i][0] = stoi(arr_color_true[i][0]);
 
     
-    for(int i = 0; i < arr_color.size(); i++){
+    for(int i = 0; i < arr_color.size()-5; i++){
         arr_int_color[i][0] = stoi(arr_color_true[i][0]);
         arr_int_color[i][1] = stoi(arr_color_true[i][1]);
     }
@@ -75,10 +77,14 @@ void Start_game(){
         // перемещаем курсор чтобы глаза не мазолило, а также чтобы переписать экран сцены
         cur_move(0, 0);
 
+        int k = 0;
         for(int i = 0; i < map.size(); i++){
-            for(int j = 0; j < map.size(); j++){
-                cout << map[i][j] << endl;
+            for(int j = 0; j < map[i].size(); j++){
+                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),  (arr_int_color[k][0] << 4) | arr_int_color[k][1]);
+                    k++;
+                    cout << map[i][j];
             }
+            cout << endl;
         }
 
         Walker.P_move();
