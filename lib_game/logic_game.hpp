@@ -39,7 +39,7 @@ void Start_game(){
             cout << map[i] << endl;
         }
 
-        Walker.P_move();
+        Walker.P_move(map);
         cur_move(Walker.X, Walker.Y);
         cout << Walker.View;
         

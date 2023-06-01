@@ -1,4 +1,3 @@
-// 
 class Player{
 public:
     // propetries
@@ -6,38 +5,43 @@ public:
     string View = "☺";
 
     // metod's
-    void P_move(){
+    void P_move(vector <string> map_out){
         if (kbhit()){
             switch(getch()){
                 // W
                 case 119:
-                    this->Y--;
-                    // if(Y != 1){
-                    //     this->Y--;
-                    // }
+                    if(!Collision(this->X, this->Y-1, map_out)){
+                        this->Y--;
+                    }
                     break;
                 // S
                 case 115:
-                    this->Y++;
-                    // if(Y !=100){
-                    //     this->Y++;
-                    // }
+                    if(!Collision(this->X, this->Y+1, map_out)){
+                        this->Y++;
+                    }
                     break;
                 // A
                 case 97:
-                    this->X--;
-                    // if(X !=1){
-                    //     this->X--;
-                    // }
+                    if(!Collision(this->X-1, this->Y, map_out)){
+                        this->X--;
+                    }
                     break;
                 // D
                 case 100:
-                    this->X++;
-                    // if(X !=300){
-                    //     this->X++;
-                    // }
+                    if(!Collision(this->X+1, this->Y, map_out)){
+                        this->X++;
+                    }
                     break;
             }
+        }
+    }
+    bool Collision(int X, int Y, vector <string> map_out){
+        // проверка колизии перед игроком, если есть то мы стоим (возвращаем 1), если нет (возвращаем 0)
+        if(map_out[Y][X] == map_out[0][0]){
+            return true;
+        }
+        else{
+            return false;
         }
     }
 };
