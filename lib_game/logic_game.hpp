@@ -25,7 +25,7 @@ void Start_game(){
 
     Player Walker;
     // начальное положение игрока
-    Walker.X = 3;
+    Walker.X = 20;
     Walker.Y = 3;
 
 
