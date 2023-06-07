@@ -10,25 +10,25 @@ public:
             switch(getch()){
                 // W
                 case 119:
-                    if(!Collision(this->X, this->Y-1, map_out)){
+                    if(!Collision(this->X, this->Y-1, map_out) && Y > 1){
                         this->Y--;
                     }
                     break;
                 // S
                 case 115:
-                    if(!Collision(this->X, this->Y+1, map_out)){
+                    if(!Collision(this->X, this->Y+1, map_out) && Y < 29){
                         this->Y++;
                     }
                     break;
                 // A
                 case 97:
-                    if(!Collision(this->X-1, this->Y, map_out)){
+                    if(!Collision(this->X-1, this->Y, map_out) && X > 1){
                         this->X--;
                     }
                     break;
                 // D
                 case 100:
-                    if(!Collision(this->X+1, this->Y, map_out)){
+                    if(!Collision(this->X+1, this->Y, map_out) && X < 60){
                         this->X++;
                     }
                     break;
