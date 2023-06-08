@@ -10,6 +10,8 @@ void Start_game(){
     vector <string> map;
     vector <string> ramka;
 
+    string map_str = "";
+
 
     // открывает файл карты и рамки для вывода/обработки
     ifstream test_map("assets/maps/map1.txt");
@@ -21,6 +23,7 @@ void Start_game(){
         // вывод всего файла в массив строк с помощью getline()
         while (getline(test_map, line))
         {
+            map_str = map_str+"|"+line+"\n";
             map.push_back(line);
         }
     }
@@ -55,15 +58,13 @@ void Start_game(){
         }
 
         // выводим карту
-        for(int i = 0; i < map.size(); i++){
-            cur_move(1, i+1);
-            cout << map[i] << endl;
-        }
+        cur_move(0, 1);
+        cout << map_str;
 
         // Передвижение относительно карты
         Walker.P_move(map);
 
-        // вывод Walker
+        // вывод цветного Walker
         cur_move(Walker.X, Walker.Y);
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (3 << 4) | 9);
         cout << Walker.View;
