@@ -56,7 +56,26 @@ void Start_game(){
         for(int i = 0; i < ramka.size(); i++){
             cout << ramka[i] << endl;
         }
+        
+        // части интерфейса (хп, стамина)
+        cur_move(1, 40-7);
+        cout << "HP      :";
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (0 << 4) | 4);
+        cout << "▄▄▄▄▄▄▄▄▄▄▄▄";
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (0 << 4) | 7);
 
+        cur_move(1, 40-6);
+        cout << "Stamina :";
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (0 << 4) | 6);
+        cout << "████████████";
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (0 << 4) | 7);
+
+        cur_move(1, 40-5);
+        cout << "Mana    :";
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (0 << 4) | 1);
+        cout << "████████████";
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (0 << 4) | 7);
+        
         // выводим карту
         cur_move(0, 1);
         cout << map_str;
@@ -66,7 +85,7 @@ void Start_game(){
 
         // вывод цветного Walker
         cur_move(Walker.X, Walker.Y);
-        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (3 << 4) | 9);
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (0 << 4) | 1);
         cout << Walker.View;
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (0 << 4) | 7);
         

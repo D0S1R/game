@@ -38,6 +38,7 @@ public:
     bool Collision(int X, int Y, vector <string> map_out){
         // проверка колизии перед игроком, если есть то мы стоим (возвращаем 1), если нет (возвращаем 0)
         Y= Y-1;
+        X= X-1;
         if(map_out[Y][X] == '#' || map_out[Y][X] == '0'){
             return true;
         }
