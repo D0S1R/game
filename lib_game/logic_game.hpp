@@ -61,7 +61,7 @@ void Start_game(){
         cur_move(1, 40-7);
         cout << "HP      :";
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (0 << 4) | 4);
-        cout << "▄▄▄▄▄▄▄▄▄▄▄▄";
+        cout << "████████████";
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (0 << 4) | 7);
 
         cur_move(1, 40-6);
