@@ -3,6 +3,18 @@ public:
     // propetries
     int X, Y;
     string View = "☺";
+        
+    // health in-game
+    int P_maxHealth = 100;
+    int P_currentHealth = 50;
+    
+    // stamina in-game
+    int P_maxStamina = 100;
+    int P_currentStamina = 50;
+    
+    // mana in-game
+    int P_maxMana = 100;
+    int P_currentMana = 50;
 
     // metod's
     void P_move(vector <string> map_out){

@@ -9,14 +9,18 @@ void Start_game(){
 
     vector <string> map;
     vector <string> ramka;
+    
+    Player Walker;
 
     string map_str = "";
 
+    // 
+    int Scale_Percent;
 
     // открывает файл карты и рамки для вывода/обработки
     ifstream test_map("assets/maps/map1.txt");
     ifstream test_ramka("assets/interface/square.txt");
-    
+
     // проверка открыт ли файл
     if (test_map.is_open())
     {
@@ -40,7 +44,6 @@ void Start_game(){
     test_map.close();
     test_ramka.close();
 
-    Player Walker;
     // начальное положение игрока
     Walker.X = 20;
     Walker.Y = 3;
@@ -61,19 +64,21 @@ void Start_game(){
         cur_move(1, 40-7);
         cout << "HP      :";
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (0 << 4) | 4);
-        cout << "████████████";
+        Scale_Percent = (Walker.P_currentHealth / Walker.P_maxHealth) * 100;
+        for(int i=0; i < Scale_Percent; i +=10){
+            cout << "█";
+        }
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (0 << 4) | 7);
-
         cur_move(1, 40-6);
         cout << "Stamina :";
-        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (0 << 4) | 6);
-        cout << "████████████";
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (0 << 4) | 2);
+        cout << "██████████";
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (0 << 4) | 7);
 
         cur_move(1, 40-5);
         cout << "Mana    :";
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (0 << 4) | 1);
-        cout << "████████████";
+        cout << "██████████";
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (0 << 4) | 7);
         
         // выводим карту

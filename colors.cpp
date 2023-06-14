@@ -24,6 +24,8 @@ int main()
 {
     HANDLE col;
     col =  GetStdHandle(STD_OUTPUT_HANDLE);
+
+    Scale_Percent = (Walker.P_currentHealth / Walker.P_maxHealth) * 100;
   
     for (int i = 0; i < 16; i++) {
         for (int j=0; j<16; j++){
