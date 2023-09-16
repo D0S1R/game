@@ -28,7 +28,7 @@ int main(){
     // Тут мы вызываем интро
     intro();
 
-    Sleep(1500);
+    Sleep(1800);
     system("CLS");
     menu();
     
