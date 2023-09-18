@@ -64,21 +64,25 @@ void Start_game(){
         cur_move(1, 40-7);
         cout << "HP      :";
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (0 << 4) | 4);
-        Scale_Percent = (Walker.P_currentHealth / Walker.P_maxHealth) * 100;
-        for(int i=0; i < Scale_Percent; i +=10){
+        // Scale_Percent = (Walker.P_currentHealth / Walker.P_maxHealth) * 100;
+        for(int i=0; i < Walker.P_currentHealth; i +=10){
             cout << "█";
         }
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (0 << 4) | 7);
         cur_move(1, 40-6);
         cout << "Stamina :";
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (0 << 4) | 2);
-        cout << "██████████";
+        for(int i=0; i < Walker.P_currentStamina; i +=10){
+            cout << "█";
+        }
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (0 << 4) | 7);
 
         cur_move(1, 40-5);
         cout << "Mana    :";
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (0 << 4) | 1);
-        cout << "██████████";
+        for(int i=0; i < Walker.P_currentMana; i +=10){
+            cout << "█";
+        }
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (0 << 4) | 7);
         
         // выводим карту
