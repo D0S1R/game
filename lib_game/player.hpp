@@ -16,8 +16,31 @@ public:
     int P_maxMana = 100;
     int P_currentMana = 50;
 
+    string Inventory[10];
+    bool isShowInv = false;
+    void ShowInv(){
+        cur_move(62, 32);
+        cout << "Inventory :";
+        cur_move(62, 34);
+        cout << Inventory[0];
+    }
+    void constructor(){
+        Inventory[0] = "Sword";
+        Inventory[1] = "Shield";
+        Inventory[2] = "Mana potion";
+        Inventory[3] = "Health potion";
+        Inventory[4] = "Yorik";
+        Inventory[5] = "Eto ne moe mne podkinyli";
+        Inventory[6] = "Bow";
+        Inventory[7] = "Arrow";
+        Inventory[8] = "Torch";
+        Inventory[9] = "Passport";
+    }
     // metod's
     void P_move(vector <string> map_out){
+        if(isShowInv)
+            ShowInv();
+
         if (kbhit()){
             switch(getch()){
                 // W
@@ -44,6 +67,13 @@ public:
                         this->X++;
                     }
                     break;
+                case 9:
+                    if(isShowInv){
+                        isShowInv = false; 
+                    } else{
+                        isShowInv = true;
+                    }
+
             }
         }
     }
@@ -57,5 +87,5 @@ public:
         else{
             return false;
         }
-    }
+    };
 };

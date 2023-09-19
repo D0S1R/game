@@ -1,5 +1,6 @@
 // API игры
 #include "core.hpp"
+#include "player.hpp"
 
 // вот это вот всё чтобы карту вывести ёкарный бабай
 void Start_game(){

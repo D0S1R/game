@@ -1,5 +1,5 @@
-#include "player.hpp"
-#include "controls.hpp"
+// #include "player.hpp"
+// #include "controls.hpp"
 
 // Курсор чтобы переместить, глаза мазолит
 void cur_move(int x1, int y1){
