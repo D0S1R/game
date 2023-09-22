@@ -15,26 +15,22 @@ public:
     // mana in-game
     int P_maxMana = 100;
     int P_currentMana = 50;
-
+    // Блок кода про инвентарь 
+    int Current_item = 0;
     string Inventory[10];
     bool isShowInv = false;
     void ShowInv(){
         cur_move(62, 32);
         cout << "Inventory :";
-        cur_move(62, 34);
-        cout << Inventory[0];
+        cur_move(62, 33);
+        cout << this->Inventory[Current_item];
     }
-    void constructor(){
-        Inventory[0] = "Sword";
-        Inventory[1] = "Shield";
-        Inventory[2] = "Mana potion";
-        Inventory[3] = "Health potion";
-        Inventory[4] = "Yorik";
-        Inventory[5] = "Eto ne moe mne podkinyli";
-        Inventory[6] = "Bow";
-        Inventory[7] = "Arrow";
-        Inventory[8] = "Torch";
-        Inventory[9] = "Passport";
+    void initInventory(){
+        this->Inventory[0] = "Sword";
+        this->Inventory[1] = "Shield";
+        this->Inventory[2] = "Mana potion";
+        this->Inventory[3] = "Health potion";
+        this->Inventory[4] = "Beer";
     }
     // metod's
     void P_move(vector <string> map_out){
@@ -42,6 +38,7 @@ public:
             ShowInv();
 
         if (kbhit()){
+            // cout << getch();
             switch(getch()){
                 // W
                 case 119:
@@ -66,6 +63,9 @@ public:
                     if(!Collision(this->X+1, this->Y, map_out) && X < 60){
                         this->X++;
                     }
+                    // if(Current_item < 9){
+                    //     Current_item++;
+                    // }
                     break;
                 case 9:
                     if(isShowInv){
@@ -73,7 +73,23 @@ public:
                     } else{
                         isShowInv = true;
                     }
-
+                    break;
+                case 77:
+                    if(Current_item < 4){
+                        Current_item++;
+                    }
+                    break;
+                case 75:
+                    if(Current_item > 0){
+                        Current_item--;
+                    }
+                    break;
+                case 101:
+                    if(Inventory[Current_item]=="Beer"){
+                        this->P_currentHealth+=200;
+                    }
+                // 
+                break;
             }
         }
     }

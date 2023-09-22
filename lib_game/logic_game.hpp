@@ -12,6 +12,7 @@ void Start_game(){
     vector <string> ramka;
     
     Player Walker;
+    Walker.initInventory();
 
     string map_str = "";
 
