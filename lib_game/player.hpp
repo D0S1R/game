@@ -38,7 +38,7 @@ public:
             ShowInv();
 
         if (kbhit()){
-            // cout << getch();
+            cout << getch();
             switch(getch()){
                 // W
                 case 119:
@@ -87,6 +87,14 @@ public:
                 case 101:
                     if(Inventory[Current_item]=="Beer"){
                         this->P_currentHealth+=200;
+                        this->P_currentStamina+=100;
+                        this->P_currentMana+=10;
+                    }
+                    if(inventory[Current_item]=="Health potion"){
+                        this->P_currentHealth+=50;
+                    }
+                    if(inventory[Current_item]=="Mana potion"){
+                        this->P_currentMana+=50;
                     }
                 // 
                 break;
