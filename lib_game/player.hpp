@@ -25,6 +25,61 @@ public:
     bool isShowInv = false;
     bool isBox = false;
 
+    // ВРЕМЕННО, потом перенести в логичное и правельное место
+    int coords_chest[10][2];
+    string item_chest[10];
+
+    // init chest
+    void initChest(){
+        // char arr[100];
+
+        // cin.getline
+        string line;
+        ifstream chest("assets/maps/Chest_info.txt");
+        char seporator = ' ';
+        if (chest.is_open())
+        {
+            int num_item = 0;
+            // вывод всего файла в массив строк с помощью getline()
+            while (getline(chest, line))
+            {
+                // map_str = map_str+"|"+line+"\n";
+                // map.push_back(line);
+                string y = "", x = "", item = "";
+                bool isY = true, isX = false, isItem = false;
+                for(int i = 0; i < line.length(); i++){
+                    if(line[i] != seporator && isY){
+                        y += line[i];
+                        if(line[i+1] == seporator){
+                            isY = false;
+                            isX = true;
+                        }
+                    }
+                    if(line[i] != seporator && isX){
+                        x += line[i];
+                        if(line[i+1] == seporator){
+                            isY = false;
+                            isX = false;
+                            isItem = true;
+                        }
+                    }
+                    if(line[i] != seporator && isItem){
+                        item += line[i];
+                        if(line[i+1] == seporator){
+                            isY = false;
+                            isX = false;
+                            isItem = true;
+                        }
+                    }
+                }
+                coords_chest[num_item][0] = std::stoi(y);
+                coords_chest[num_item][1] = std::stoi(x);
+                item_chest[num_item] = item;
+                num_item++;
+            }
+        }
+    }
+
     void ShowInv(){
         cur_move(62, 32);
         cout << "Inventory : #" << Current_item+1 << "/10";
@@ -33,6 +88,7 @@ public:
     }
 
     void initInventory(){
+        initChest();
         this->Inventory[0] = "Sword";
         this->Inventory[1] = "Shield";
         this->Inventory[2] = "Mana potion";
@@ -141,9 +197,17 @@ public:
                         map_out[this->Y-1][this->X-1] == '0' ||
                         isBox
                     ){
+
                         isBox = true;
                         cur_move(62, 33);
-                        cout << "123333333333343728732184765283745";
+                        int num_item = 0;
+                        for(int i = 0; i < 10; i++){
+                            if(coords_chest[i][0] == this->Y && coords_chest[i][1] == this->X+1){
+                                num_item = i;
+                            }
+                        }
+                        cout << "Chest: " << item_chest[num_item];
+
                     }
                     // if(map_out[this->Y][this->X+1] == "0"){
                     //     cout << "623487154875623874621398745623956239875629873456982375629387459";

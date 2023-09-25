@@ -2,6 +2,8 @@
 #include "core.hpp"
 #include "player.hpp"
 
+string chest[5];
+
 // вот это вот всё чтобы карту вывести ёкарный бабай
 void Start_game(){
     // line- это где хранится строчка файла
