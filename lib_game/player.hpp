@@ -86,6 +86,17 @@ public:
         cur_move(62, 33);
         cout << this->Inventory[Current_item];
     }
+    void ShowBox(){
+        cur_move(62, 33);
+        int num_item = 0;
+        for(int i = 0; i < 10; i++){
+            if(coords_chest[i][0] == this->Y && coords_chest[i][1] == this->X+1){
+                num_item = i;
+            }
+        }
+        cout << "Chest: " << item_chest[num_item];
+    }
+        
 
     void initInventory(){
         initChest();
@@ -134,6 +145,8 @@ public:
     void P_move(vector <string> map_out){
         if(isShowInv)
             ShowInv();
+        if(isBox)
+            ShowBox();
 
         if (kbhit()){
             // cout << getch();
@@ -186,6 +199,8 @@ public:
                     if(isShowInv){
                         useItem();
                     }
+                    break;
+                case 102:
                     if(
                         map_out[this->Y][this->X+1] == '0' ||
                         map_out[this->Y][this->X-1] == '0' ||
@@ -194,21 +209,17 @@ public:
                         map_out[this->Y+1][this->X+1] == '0' ||
                         map_out[this->Y+1][this->X-1] == '0' ||
                         map_out[this->Y-1][this->X+1] == '0' ||
-                        map_out[this->Y-1][this->X-1] == '0' ||
-                        isBox
+                        map_out[this->Y-1][this->X-1] == '0'
                     ){
-
-                        isBox = true;
-                        cur_move(62, 33);
-                        int num_item = 0;
-                        for(int i = 0; i < 10; i++){
-                            if(coords_chest[i][0] == this->Y && coords_chest[i][1] == this->X+1){
-                                num_item = i;
-                            }
+                   
+                        if(isBox){
+                            isBox=false;
+                        }else{
+                            isBox=true;
                         }
-                        cout << "Chest: " << item_chest[num_item];
-
+                    
                     }
+                    
                     // if(map_out[this->Y][this->X+1] == "0"){
                     //     cout << "623487154875623874621398745623956239875629873456982375629387459";
                     // }
