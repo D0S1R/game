@@ -186,12 +186,12 @@ public:
                     }
                     break;
                 case 77:
-                    if(Current_item < 9){
+                    if(Current_item < 9 && isShowInv == true){
                         Current_item++;
                     }
                     break;
                 case 75:
-                    if(Current_item > 0){
+                    if(Current_item > 0 && isShowInv == true){
                         Current_item--;
                     }
                     break;
