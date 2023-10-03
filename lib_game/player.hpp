@@ -74,6 +74,13 @@ public:
                 }
                 coords_chest[num_item][0] = std::stoi(y);
                 coords_chest[num_item][1] = std::stoi(x);
+                string trash = item;
+                item = "";
+                for(int i = 0; i < trash.length(); i++){
+                    if(i < 3)
+                        continue;
+                    item += trash[i];
+                }
                 item_chest[num_item] = item;
                 num_item++;
             }
