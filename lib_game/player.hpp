@@ -28,6 +28,7 @@ public:
     // ВРЕМЕННО, потом перенести в логичное и правельное место
     int coords_chest[10][2];
     string item_chest[10];
+    int num_chest = -1;
 
     // init chest
     void initChest(){
@@ -95,13 +96,13 @@ public:
     }
     void ShowBox(){
         cur_move(62, 33);
-        int num_item = 0;
+        num_chest = 0;
         for(int i = 0; i < 10; i++){
             if(coords_chest[i][0] == this->Y && coords_chest[i][1] == this->X+1){
-                num_item = i;
+                num_chest = i;
             }
         }
-        cout << "Chest: " << item_chest[num_item];
+        cout << "Chest: " << item_chest[num_chest];
     }
         
 
@@ -120,7 +121,6 @@ public:
         for(int i=0; i < this->P_currentStamina; i +=10){
             line_Stam += "█";
         }
-
         for(int i=0; i < this->P_currentMana; i +=10){
             line_Mana += "█";
         }
@@ -202,6 +202,7 @@ public:
                         Current_item--;
                     }
                     break;
+                // E
                 case 101:
                     if(isShowInv){
                         useItem();
@@ -231,6 +232,20 @@ public:
                     //     cout << "623487154875623874621398745623956239875629873456982375629387459";
                     // }
                 // 
+                break;
+                // R
+                case 114:
+                if(isBox){
+                    item_chest[num_chest];
+                    for (int i = 0; i < 10; i++)
+                    {
+                        if (Inventory[i] == ""){
+                            Inventory[i] = item_chest[num_chest];
+                            item_chest[num_chest] = "";
+                            break;
+                        }
+                    }
+                }
                 break;
             }
         }

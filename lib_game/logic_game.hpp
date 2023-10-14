@@ -23,7 +23,7 @@ void Start_game(){
     int Scale_Percent;
 
     // открывает файл карты и рамки для вывода/обработки
-    ifstream test_map("assets/maps/map1.txt");
+    ifstream test_map("assets/maps/map_0_0.txt");
     ifstream test_ramka("assets/interface/square.txt");
 
     // проверка открыт ли файл
